@@ -8,8 +8,8 @@ cfg = __C
 #
 
 __C.DATASETS = edict()
-__C.DATASETS.DATADIR = '/home/ds17/Documents/phd/data_generation/data/fresh_data/256_data/BB_4CH_ED'
-__C.DATASETS.SAVEDIR = '/home/ds17/Documents/phd/echo_from_noise/data_preparation/'
+__C.DATASETS.DATADIR = '/path/to/dataset'
+__C.DATASETS.SAVEDIR = '/path/to/save'
 __C.DATASETS.DATASET_MODE = 'camus'
 
 __C.TRAIN = edict()
@@ -47,7 +47,7 @@ __C.TRAIN.EMA_RATE = "0.9999"
 __C.TRAIN.DROP_RATE = 0.0
 __C.TRAIN.LOG_INTERVAL = 10
 __C.TRAIN.SAVE_INTERVAL = 2000
-__C.TRAIN.RESUME_CHECKPOINT = "/home/ds17/Documents/phd/semantic-diffusion-model/ema_0.9999_100000.pt"
+__C.TRAIN.RESUME_CHECKPOINT = "/path/to/checkpoint"  # optional, if you want to resume training from a checkpoint
 __C.TRAIN.USE_FP16 = True
 __C.TRAIN.DISTRIBUTED_DATA_PARALLEL = True
 __C.TRAIN.USE_NEW_ATTENTION_ORDER = True
@@ -64,7 +64,7 @@ __C.TEST.S = 1.0
 __C.TEST.USE_DDIM = False
 __C.TEST.DETERMINISTIC = True
 __C.TEST.INFERENCE_ON_TRAIN = True
-__C.TEST.BATCH_SIZE = 10
+__C.TEST.BATCH_SIZE = 1
 __C.TEST.CLIP_DENOISED = True
-__C.TEST.NUM_SAMPLES = 9
-__C.TEST.RESULTS_DIR = "/home/ds17/Documents/phd/echo_from_noise/semantic_diffusion_model/results_test"
+__C.TEST.NUM_SAMPLES = 1000
+__C.TEST.RESULTS_DIR = "/path/to/results"
