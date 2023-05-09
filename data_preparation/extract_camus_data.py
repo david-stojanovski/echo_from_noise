@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     camus_data_folder = r'/path/to/camus/data'
     save_folder_path = r'/path/to/save/folder'
-    save_img_size = (512, 512)
+    save_img_size = (256, 256)
 
     view_names = ['2CH_ED', '2CH_ES', '4CH_ED', '4CH_ES']
     train_test_names = ['training', 'testing']
