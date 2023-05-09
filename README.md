@@ -4,6 +4,12 @@
 
 <img src='./README_assets/pipeline.png'>  
 
+## Cite this work [arXiv]
+
+```
+
+```
+
 ## Papers
 
 ### [Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation Paper](https://arxiv.org/abs/2207.00050)
@@ -49,28 +55,73 @@ modalities.
 
 The data used and generated for the paper can be found as follows:
 
-| Data                    | Download link                                                                                                                                   |
-|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|
-| CAMUS                   | [Image download](https://humanheart-project.creatis.insa-lyon.fr/database/#collection/6373703d73e9f0047faa1bc8/folder/6373727d73e9f0047faa1bca) |
-| SDM generated US images | [Image download](https://drive.google.com/file/d/1O8Avsvfc8rP9LIt5tkJxowMTpi1nYiik/view?usp=sharing)                                            |
-| SDM pretrained weights  | [Checkpoint](https://drive.google.com/file/d/1iwpruJ5HMHdAA1tuNR8dHkcjGtxzSFV_/view?usp=sharing)                                                |
+1) The CAMUS data used for training and testing can be
+   found [here](https://humanheart-project.creatis.insa-lyon.fr/database/#collection/6373703d73e9f0047faa1bc8/folder/6373727d73e9f0047faa1bca).
+2) The generated synthetic data and pretrained models can be
+   found [here](https://zenodo.org/record/7896652#.ZFpXRtLMLmE)
 
-- Train the SDM model:
+- A script to extract the CAMUS data into the required format can be found
+  in `./data_preparation/extract_camus_data.py`. All that needs to be edited is the `camus_data_folder`
+  and `save_folder_path` variables.
+
+
+- To then augment the extracted CAMUS data the script `./data_preparation/augment_camus_labels.py` can be used. Again,
+  the `data_folder` and `save_folder` variables need to be edited.
+
+- After the network has been trained and inferenced (As explained below) the inferenced images can then be placed in the
+  correct folder format for the segmentation task using the `./data_preparation/prepare_inference4segmentation.py`
+  script. The `testing_data_folder` is the path to the original CAMUS data and the `sdm_results_folder` is the path to
+  the inferenced SDM data. `save_folder` is the path to save the prepared data.
+
+# Semantic Diffusion Model
+
+The default parameters for training and inference can be found in the `./semantic_diffusion_model/config.py` file.
+The original network our code is developed on can be
+found [here](https://github.com/WeilunWang/semantic-diffusion-model). This also contains a number of scripts with
+variations on parameters for both training and inference.
+
+## SDM training
+
+To train the SDM model run:
 
 ```bash
-mpiexec -np 8 python3 ./image_train.py --datadir ./data/2ch_data --savedir ./output_2ch --batch_size_train 12 \
+mpiexec -np 8 python3 ./image_train.py --datadir ./data/view_folder --savedir ./output --batch_size_train 12 \
  --is_train True --save_interval 50000 --lr_anneal_steps 50000 --random_flip True --deterministic_train False \
  --img_size 256
 ```
 
-- Inference the pretrained SDM model:
+## SDM inference
+
+To inference the SDM model run:
 
 ```bash
-mpiexec -np 8 python3 ./image_sample.py --datadir ./data/2ch_data_augmented \
---resume_checkpoint ./output/ema_0.9999_050000_2ch.pt --results_dir ./results_2CH_ED --num_samples 1000 \
+mpiexec -np 8 python3 ./image_sample.py --datadir ./data/view_folder \
+--resume_checkpoint ./path/to/ema_checkpoint.pt --results_dir ./results_2CH_ED --num_samples 2250 \
 --is_train False --inference_on_train True
 ```
 
-### Acknowledgements
+# Segmentation Network
 
-Our code is developed based on [semantic-diffusion-model](https://github.com/WeilunWang/semantic-diffusion-model). 
+## Training Segmentation Network
+
+The main script to run a training of the segmentation network is `./echo_segmentation/runner.py`. An example of how to
+run this script is as follows:
+
+```bash
+python ./echo_segmentations/runner.py --data-dir /path/to/data/%s/
+```
+
+The default parameters of the argparse are those which were used to train the network, and are found
+within `./echo_segmentation/runner.py`
+
+## Testing Segmentation Network
+
+The main script to run a training of the segmentation network is `./echo_segmentation/test_model.py`. An example of how
+to  run this script is as follows:
+
+```bash
+python ./echo_segmentations/test_model.py --data-dir /path/to/data/%s/ --model-path /path/to/model
+```
+
+The default parameters of the argparse are those which were used to test the network, and are found
+within `./echo_segmentation/test_model.py`
