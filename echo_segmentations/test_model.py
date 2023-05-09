@@ -18,7 +18,7 @@ def get_args_from_command_line():
     parser.add_argument('--data-dir',
                         dest='data_dir',
                         help='path to data directory',
-                        default=r'/home/ds17/Documents/phd/echo_from_noise/data_preparation/seg_data_trial/2CH_ES/%s/',
+                        default=r'/path/to/data/%s/',
                         type=str)
     parser.add_argument('--output-dir',
                         dest='output_dir',
