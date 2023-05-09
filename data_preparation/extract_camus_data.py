@@ -70,8 +70,8 @@ def save_all_camus_imgs(in_data_folder, save_folder, img_save_size, selected_vie
 
 if __name__ == '__main__':
 
-    camus_data_folder = r'/home/ds17/Documents/phd/data_generation/data/generated_data/Resources/database'
-    save_folder_path = r'//data_preparation/trial'
+    camus_data_folder = r'/path/to/camus/data'
+    save_folder_path = r'/path/to/save/folder'
     save_img_size = (512, 512)
 
     view_names = ['2CH_ED', '2CH_ES', '4CH_ED', '4CH_ES']

@@ -17,9 +17,9 @@ def move_test_files_to_folder(data_folder_in, view_name_in, save_folder_testing)
 
 if __name__ == '__main__':
 
-    testing_data_folder = r'/home/ds17/Documents/phd/echo_from_noise/data_preparation/trial/2CH_ED'
-    sdm_results_folder = r'/home/ds17/Documents/phd/semantic-diffusion-model/inferenced_images_folder/results_2CH_ED_augmented'
-    save_folder = r'/home/ds17/Documents/phd/echo_from_noise/data_preparation/seg_data_trial'
+    testing_data_folder = r'/path/to/camus/images'
+    sdm_results_folder = r'/path/to/sdm/results'
+    save_folder = r'/path/to/save/folder'
 
     samples_folder = os.path.join(sdm_results_folder, 'samples')
     labels_folder = os.path.join(sdm_results_folder, 'labels')
