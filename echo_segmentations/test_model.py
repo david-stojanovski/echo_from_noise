@@ -7,10 +7,9 @@ import torchvision.transforms as transforms
 from monai.networks.nets import UNet
 from torch.utils.data import DataLoader
 
-import data_transforms
-from datasets import DiffusionDataset
-from test_visualize import visualize_test_inference
-from epoch_cycle import run_cycle
+import utils.data_transforms as data_transforms
+from utils.datasets import DiffusionDataset
+from utils.epoch_cycle import run_cycle
 
 
 def get_args_from_command_line():
@@ -18,7 +17,7 @@ def get_args_from_command_line():
     parser.add_argument('--data-dir',
                         dest='data_dir',
                         help='path to data directory',
-                        default=r'/path/to/data/%s/',
+                        default=r'/path/to/view_folder/%s/',
                         type=str)
     parser.add_argument('--output-dir',
                         dest='output_dir',
@@ -42,7 +41,7 @@ def get_args_from_command_line():
     parser.add_argument('--compile-model',
                         dest='compile_model',
                         help='Whether to perform pytorch 2.0 automatic model compilation',
-                        default=True,
+                        default=False,
                         type=bool)
     parser.add_argument('--batch-size',
                         dest='batch_size',
@@ -109,14 +108,13 @@ def main(args):
         model = torch.compile(model)
 
     state_dict = torch.load(args.load_model_path)
-    remove_prefix = '_orig_mod.'
-    state_dict = {k[len(remove_prefix):] if k.startswith(remove_prefix) else k: v for k, v in state_dict.items()}
+    # remove_prefix = '_orig_mod.'
+    # state_dict = {k[len(remove_prefix):] if k.startswith(remove_prefix) else k: v for k, v in state_dict.items()}
     model.load_state_dict(state_dict)
 
     criterion = torch.nn.CrossEntropyLoss()
     test_log = run_cycle(test_data_loader, num_classes, device, model, criterion=criterion, current_epoch=1,
-                           desc='Test')
-    visualize_test_inference(model, test_data_loader, test_batch_size=8, num_classes=num_classes, device=device)
+                         desc='Test')
 
     print(
         'Test Dice: [Mean: %.4f] [Lv endo %.4f] [Lv Epi %.4f] [Lv Atrium %.4f] [Lv endo std %.4f] [Lv Epi std %.4f] [Lv Atrium std %.4f] '
@@ -130,6 +128,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    # sys.argv = sys.argv + ['--output-dir', os.path.join(os.getcwd(), 'output_2CH_ES_test')]
+    # sys.argv = sys.argv + ['--model-path', '/path/to/model.pth']
     input_args = get_args_from_command_line()
     main(input_args)

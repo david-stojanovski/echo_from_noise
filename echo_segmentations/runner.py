@@ -13,11 +13,11 @@ from tensorboardX import SummaryWriter
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
 
-import data_transforms
-from dataset_analyzer import get_mean_and_std
-from datasets import DiffusionDataset
-from epoch_cycle import run_cycle
-from utils import add_data2tb
+import utils.data_transforms as data_transforms
+import utils.dataset_analyzer as dataset_analyzer
+from utils.datasets import DiffusionDataset
+from utils.epoch_cycle import run_cycle
+from utils.network_utils import add_data2tb
 
 
 def get_args_from_command_line():
@@ -25,7 +25,7 @@ def get_args_from_command_line():
     parser.add_argument('--data-dir',
                         dest='data_dir',
                         help='path to data directory',
-                        default=r'/path/to/data/%s/',
+                        default=r'/home/ds17/Documents/phd/echo_from_noise/data_preparation/seg_data_trial/2CH_ES/%s/',
                         type=str)
     parser.add_argument('--output-dir',
                         dest='output_dir',
@@ -109,7 +109,7 @@ def main(args):
     device = torch.device(device)
 
     print('Running dataset analyzer')
-    dataset_mean, dataset_std = get_mean_and_std(train_dir, val_dir, device, batch_size=args.batch_size,
+    dataset_mean, dataset_std = dataset_analyzer.get_mean_and_std(train_dir, val_dir, device, batch_size=args.batch_size,
                                                  num_workers=args.num_workers)
 
     train_val_img_transforms = data_transforms.Compose([
@@ -256,6 +256,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    # sys.argv = sys.argv + ['--output-dir', os.path.join(os.getcwd(), 'output_2CH_ES_test')]
+    # sys.argv = sys.argv + ['data-dir', '--output-dir', os.path.join(os.getcwd(), 'output_2CH_ES_test')]
     input_args = get_args_from_command_line()
     main(input_args)
