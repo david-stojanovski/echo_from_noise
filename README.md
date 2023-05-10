@@ -1,4 +1,4 @@
-# Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE) [![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]([https://doi.org/10.48550/arxiv.2207.13424](https://arxiv.org/abs/2305.05424))
+# Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE) 
 
 &nbsp;
 
