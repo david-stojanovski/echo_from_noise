@@ -7,12 +7,19 @@
 ## Cite this work [arXiv]
 
 ```
-
+@misc{stojanovski2023echo,
+      title={Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation}, 
+      author={David Stojanovski and Uxio Hermida and Pablo Lamata and Arian Beqiri and Alberto Gomez},
+      year={2023},
+      eprint={2305.05424},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
 ```
 
 ## Papers
 
-### [Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation Paper](https://arxiv.org/abs/2207.00050)
+### [Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation Paper](https://arxiv.org/abs/2305.05424)
 
 [David Stojanovski](https://scholar.google.com/citations?user=6A_chPAAAAAJ&hl=en), [Uxio Hermida](https://scholar.google.com/citations?hl=en&user=6DkZyrXMyKEC), [Pablo Lamata](https://scholar.google.com/citations?hl=en&user=H98n1tsAAAAJ), [Arian Beqiri](https://scholar.google.com/citations?hl=en&user=osD0r24AAAAJ&view_op=list_works&sortby=pubdate), [Alberto Gomez](https://scholar.google.com/citations?hl=en&user=T4fP_swAAAAJ&view_op=list_works&sortby=pubdate)
 
