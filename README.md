@@ -65,7 +65,7 @@ The data used and generated for the paper can be found as follows:
 1) The CAMUS data used for training and testing can be
    found [here](https://humanheart-project.creatis.insa-lyon.fr/database/#collection/6373703d73e9f0047faa1bc8/folder/6373727d73e9f0047faa1bca).
 2) The generated synthetic data and pretrained models can be
-   found [here](https://zenodo.org/record/7896652#.ZFpXRtLMLmE)
+   found [here](https://zenodo.org/record/7921055#.ZFyqd9LMLmE)
 
 - A script to extract the CAMUS data into the required format can be found
   in `./data_preparation/extract_camus_data.py`. All that needs to be edited is the `camus_data_folder`
