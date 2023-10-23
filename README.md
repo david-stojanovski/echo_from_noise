@@ -4,22 +4,35 @@
 
 <img src='./README_assets/pipeline.png'>  
 
-## Cite this work [arXiv]
+## Cite this work [Springer]
 
 ```
-@misc{stojanovski2023echo,
-      title={Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation}, 
-      author={David Stojanovski and Uxio Hermida and Pablo Lamata and Arian Beqiri and Alberto Gomez},
-      year={2023},
-      eprint={2305.05424},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV}
+@InProceedings{10.1007/978-3-031-44521-7_4,
+author="Stojanovski, David
+and Hermida, Uxio
+and Lamata, Pablo
+and Beqiri, Arian
+and Gomez, Alberto",
+editor="Kainz, Bernhard
+and Noble, Alison
+and Schnabel, Julia
+and Khanal, Bishesh
+and M{\"u}ller, Johanna Paula
+and Day, Thomas",
+title="Echo from Noise: Synthetic Ultrasound Image Generation Using Diffusion Models for Real Image Segmentation",
+booktitle="Simplifying Medical Ultrasound",
+year="2023",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="34--43",
+abstract="We propose a novel pipeline for the generation of synthetic ultrasound images via Denoising Diffusion Probabilistic Models (DDPMs) guided by cardiac semantic label maps. We show that these synthetic images can serve as a viable substitute for real data in the training of deep-learning models for ultrasound image analysis tasks such as cardiac segmentation. To demonstrate the effectiveness of this approach, we generated synthetic 2D echocardiograms and trained a neural network for segmenting the left ventricle and left atrium. The performance of the network trained on exclusively synthetic images was evaluated on an unseen dataset of real images and yielded mean Dice scores of {\$}{\$}88.6 {\backslash}pm 4.91{\$}{\$}88.6{\textpm}4.91, {\$}{\$}91.9 {\backslash}pm 4.22{\$}{\$}91.9{\textpm}4.22, {\$}{\$}85.2 {\backslash}pm 4.83{\$}{\$}85.2{\textpm}4.83{\%} for left ventricular endocardium, epicardium and left atrial segmentation respectively. This represents a relative increase of 9.2, 3.3 and 13.9{\%} in Dice scores compared to the previous state-of-the-art. The proposed pipeline has potential for application to a wide range of other tasks across various medical imaging modalities.",
+isbn="978-3-031-44521-7"
 }
 ```
 
 ## Papers
 
-### [Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation Paper](https://arxiv.org/abs/2305.05424)
+### [Echo from noise: synthetic ultrasound image generation using diffusion models for real image segmentation Paper](https://link.springer.com/chapter/10.1007/978-3-031-44521-7_4)
 
 [David Stojanovski](https://scholar.google.com/citations?user=6A_chPAAAAAJ&hl=en), [Uxio Hermida](https://scholar.google.com/citations?hl=en&user=6DkZyrXMyKEC), [Pablo Lamata](https://scholar.google.com/citations?hl=en&user=H98n1tsAAAAJ), [Arian Beqiri](https://scholar.google.com/citations?hl=en&user=osD0r24AAAAJ&view_op=list_works&sortby=pubdate), [Alberto Gomez](https://scholar.google.com/citations?hl=en&user=T4fP_swAAAAJ&view_op=list_works&sortby=pubdate)
 
