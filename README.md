@@ -4,6 +4,9 @@
 
 <img src='./README_assets/pipeline.png'>  
 
+## Update
+We have recently released (03/10/2024) a new paper/codebase/dataset which includes a number of extensions and improvements to this work. Find out about it [here](https://github.com/david-stojanovski/EDMLX)
+
 ## Cite this work [Springer]
 
 ```
